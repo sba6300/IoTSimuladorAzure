@@ -41,6 +41,14 @@
             "Microsoft.Azure.Devices.Client": {
               "target": "Package",
               "version": "[1.21.1, )"
+            },
+            "SerialPortLib": {
+              "target": "Package",
+              "version": "[1.0.18, )"
+            },
+            "System.IO.Ports": {
+              "target": "Package",
+              "version": "[4.6.0, )"
             }
           },
           "imports": [

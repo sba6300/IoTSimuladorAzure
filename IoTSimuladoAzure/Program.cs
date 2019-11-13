@@ -2,26 +2,46 @@
 using System;
 using System.Text;
 
+using System;
+using System.IO.Ports;
+using System.Threading;
+
+
 namespace IoTSimuladoAzure
 {
     class Program
     {
+        
+
         static void Main(string[] args)
         {
-            try
+
+            SerialPort _serialPort = new SerialPort();
+            _serialPort.PortName = "COM2";//Set your board COM
+            _serialPort.BaudRate = 9600;
+            _serialPort.Open();
+            while (true)
             {
-                var deviceClient = DeviceClient.CreateFromConnectionString("HostName=MyArduinoIoTHub.azure-devices.net;DeviceId=arduinosensor;SharedAccessKey=/RthnpezK3JRhvCjl1UYOZvforOYhfo0zQmZu9x1SKQ=");
-                var formatJason = "{\"IdTest\" :5,\"Distance\" :7,\"Date\" :null}";
-                var msg = new Message(Encoding.UTF8.GetBytes(formatJason));
-                 deviceClient.SendEventAsync(msg);
-                Console.WriteLine("mensaje enviado: " + formatJason);
-                Console.ReadKey();
+                string a = _serialPort.ReadExisting();
+                Console.WriteLine(a);
+                Thread.Sleep(1000);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("!!!! " + ex.Message);
-                Console.ReadKey();
-            }
+
+
+            /* try
+             {
+                 var deviceClient = DeviceClient.CreateFromConnectionString("HostName=MyArduinoIoTHub.azure-devices.net;DeviceId=arduinosensor;SharedAccessKey=/RthnpezK3JRhvCjl1UYOZvforOYhfo0zQmZu9x1SKQ=");
+                 var formatJason = "{\"IdTest\" :5,\"Distance\" :7,\"Date\" :null}";
+                 var msg = new Message(Encoding.UTF8.GetBytes(formatJason));
+                  deviceClient.SendEventAsync(msg);
+                 Console.WriteLine("mensaje enviado: " + formatJason);
+                 Console.ReadKey();
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine("!!!! " + ex.Message);
+                 Console.ReadKey();
+             }*/
         }
     }
 }
