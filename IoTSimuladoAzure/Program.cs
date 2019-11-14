@@ -27,9 +27,9 @@ namespace IoTSimuladoAzure
             TwilioClient.Init(accountSID, authToken);
 
             // Use the Twilio-provided site for the TwiML response.
-            var url = "https://twimlets.com/message?";
+            var url = "https://twimlets.com/echo?Twiml=";
             //url = $"{url}?Message%5B0%5D=hola%20peterrrrrrr";
-            var m = "<Response><Say voice=\"alice\" language=\"es-ES\">Peter mi hamburgesa</Say><Play>https://pwsandoval.com/ritmo.mp3</Play></Response>";
+            var m = "<Response><Say voice=\"alice\" language=\"es-ES\">Alerta se quema sider</Say><Play>https://pwsandoval.com/ritmo.mp3</Play></Response>";
             var response = new VoiceResponse();
             response.Say("peter mi hamburgesa", voice: "man", language: "es-ES");
 
@@ -44,7 +44,7 @@ namespace IoTSimuladoAzure
 
             url += m;
             var call = CallResource.Create(
-                  to: new PhoneNumber("+51931289151"),
+                  to: new PhoneNumber("+51961915596"),
                   from: new PhoneNumber("+51961915596"),
                   url: new Uri(url));
             Console.WriteLine(url);
