@@ -9,6 +9,7 @@
     <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.21.1" />
     <PackageReference Include="SerialPortLib" Version="1.0.18" />
     <PackageReference Include="System.IO.Ports" Version="4.6.0" />
+    <PackageReference Include="Twilio" Version="5.35.1" />
   </ItemGroup>
 
 </Project>
